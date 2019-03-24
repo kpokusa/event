@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>list some data</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<form action="#" th:action="@{/main/addevents}" method="post" th:object="${#messages}">
+    <input th:field="*{}" th:type="text">
+    <button th:action="submit">Add new car</button>
+</form>
+
+<h1>Thymeleaf tutorial - Answer for exercise 1: bean values</h1>
+<h2>Product information</h2>
+<dl>
+    <dt>Product name</dt>
+    <dd>XXX</dd>
+
+    <dt>Product price</dt>
+    <dd>XXX</dd>
+
+    <dt>Product available from</dt>
+    <dd>XXX</dd>
+</dl>
+</body>
+</html>
