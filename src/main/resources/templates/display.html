@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>list some data</title>
+    <title>list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -10,13 +10,25 @@
 
 <h4>Display events</h4>
 <br>
-<table>
-    <tr>
-        <td th:text="${}" ></td>
-        <td th:text="${}"></td>
-        <td th:text="${}" ></td>
-        </tr>
+<table class="table">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="events : ${events}">
+        <td><span th:text="${events.event_name}"> </span></td>
+        <td><span th:text="${events.event_description}">  </span></td>
+        <td><span th:text="${events.event_city}">  </span></td>
+
+    </tr>
+    </tbody>
 </table>
+
 
 </body>
 </html>
