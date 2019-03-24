@@ -5,12 +5,13 @@ import com.eventcalendar.event.exceptions.EventNotFoundException;
 import com.eventcalendar.event.persistance.Event;
 import com.eventcalendar.event.persistance.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/main")
 public class EventController {
 
@@ -19,18 +20,16 @@ public class EventController {
     private EventRepo eventRepo;
 
 
-    @GetMapping("/events")
-    List<Event> all() {
-        return (List<Event>) eventRepo.findAll();
-    }
 
-   /* @RequestMapping(value="/events", method = RequestMethod.GET)
-    List<Event> all(Model model) {
-        model.addAttribute("list", eventRepo.findAll());
-        return (List<Event>) eventRepo;
+    @GetMapping(value = "/events")
+    public String events(Model model) {
+
+        Iterable<Event> events = eventRepo.findAll();
+        model.addAttribute("events", events);
+
+        return "display";
     }
-*/
-    @PostMapping("/addevents")
+        @PostMapping("/addevents")
     Event newEvent(@RequestBody Event newEvent) {
 
         return eventRepo.save(newEvent);
@@ -47,7 +46,6 @@ public class EventController {
 
     @PutMapping("/events/{id}")
     Event replaceEvent(@RequestBody Event newEvent, @PathVariable Long id) {
-
         return eventRepo.findById(id)
                 .map(event -> {
                     event.setEvent_name(newEvent.getEvent_name());
@@ -67,11 +65,7 @@ public class EventController {
         eventRepo.deleteById(id);
     }
 
-    @RequestMapping(value = "events2", method = RequestMethod.GET)
-    public List<Event> messages(Model model) {
-        model.addAttribute("messages", eventRepo.findAll());
-        return (List<Event>) eventRepo.findAll();
-    }
+
 
 
 }
