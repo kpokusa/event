@@ -18,6 +18,13 @@
         <th scope="col"></th>
     </tr>
     </thead>
+    <h1>Thymeleaf tutorial - Please register</h1>
+    <form action="#" data-th-action="@{/events}" data-th-object="${events}" method="post">
+        <h1>
+        <button type="submit" name="action" value="login">Login</button>
+        <button type="submit" name="action" value="register">Register</button>
+        </h1>
+    </form>
 
     <tbody>
         <tr th:each="events : ${events}">

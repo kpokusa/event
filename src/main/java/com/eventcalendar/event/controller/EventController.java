@@ -4,12 +4,11 @@ package com.eventcalendar.event.controller;
 import com.eventcalendar.event.exceptions.EventNotFoundException;
 import com.eventcalendar.event.persistance.Event;
 import com.eventcalendar.event.persistance.EventRepo;
+import com.eventcalendar.event.persistance.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/main")
@@ -18,8 +17,6 @@ public class EventController {
 
     @Autowired
     private EventRepo eventRepo;
-
-
 
     @GetMapping(value = "/events")
     public String events(Model model) {
@@ -34,8 +31,6 @@ public class EventController {
 
         return eventRepo.save(newEvent);
     }
-
-
 
     @GetMapping("/events/{id}")
     Event singleEvent(@PathVariable Long id) /*throws EventNotFoundException*/ {
@@ -63,6 +58,25 @@ public class EventController {
     @DeleteMapping("/events/{id}")
     void deleteEvent(@PathVariable Long id) {
         eventRepo.deleteById(id);
+    }
+
+    @RequestMapping(value="/edit", method=RequestMethod.POST)
+    public void edit(@ModelAttribute User user,
+                     @RequestParam(value="action", required=true) String action) {
+        switch (action) {
+            case "login":
+                //do stuff
+
+                break;
+            case "register":
+                // do stuff
+                break;
+            default:
+                // do stuff
+                break;
+        }
+        return;
+
     }
 
 
