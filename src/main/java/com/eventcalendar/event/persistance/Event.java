@@ -9,7 +9,8 @@ import java.time.LocalDate;
 public class Event {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column( name = "event_id",nullable = false)
     private Long id;
 
     private String event_name;
@@ -20,8 +21,7 @@ public class Event {
     private String event_city;
 
 
-
-    public Event(String event_name, LocalDate event_date, String event_description, User user) {
+    public Event(String event_name, LocalDate event_date, String event_description, String event_city) {
         this.event_name = event_name;
         this.event_date = event_date;
         this.event_description = event_description;
