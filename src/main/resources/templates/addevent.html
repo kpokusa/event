@@ -22,7 +22,7 @@
     <input type="text" th:field="*{event_city}" id="event_city" placeholder="City">
     <span th:if="${#fields.hasErrors('event_city')}" th:errors="*{event_city}"></span>
     <label for="event_date">event date</label>
-    <input type="text" th:field="*{event_date}" id="event_date" placeholder="Year-Mn-Dy">
+    <input type="date" th:field="*{event_date}" id="event_date" placeholder="Year-Mn-Dy">
     <span th:if="${#fields.hasErrors('event_date')}" th:errors="*{event_date}"></span>
    <br>
     <input type="submit" value="Add event">
