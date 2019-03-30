@@ -1,6 +1,8 @@
 package com.eventcalendar.event.persistance;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -9,19 +11,20 @@ import java.time.LocalDate;
 public class Event {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "event_id", nullable = false)
     private Long id;
 
     private String event_name;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate event_date;
 
     private String event_description;
     private String event_city;
 
 
-
-    public Event(String event_name, LocalDate event_date, String event_description, User user) {
+    public Event(String event_name, LocalDate event_date, String event_description, String event_city) {
         this.event_name = event_name;
         this.event_date = event_date;
         this.event_description = event_description;
@@ -45,13 +48,11 @@ public class Event {
         return event_name;
     }
 
-    public void setEvent_name(String event_name)
-    {
+    public void setEvent_name(String event_name) {
         this.event_name = event_name;
     }
 
-    public LocalDate getEvent_date()
-    {
+    public LocalDate getEvent_date() {
         return event_date;
     }
 
@@ -70,13 +71,11 @@ public class Event {
         this.event_description = event_description;
     }
 
-    public String getEvent_city()
-    {
+    public String getEvent_city() {
         return event_city;
     }
 
-    public void setEvent_city(String event_city)
-    {
+    public void setEvent_city(String event_city) {
         this.event_city = event_city;
     }
 

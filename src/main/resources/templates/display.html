@@ -16,6 +16,8 @@
         <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <h1>Thymeleaf tutorial - Please register</h1>
@@ -27,10 +29,12 @@
     </form>
 
     <tbody>
-        <tr th:each="events : ${events}">
+    <tr th:each="events : ${events}">
+        <td><span th:text="${events.id}"> </span></td>
         <td><span th:text="${events.event_name}"> </span></td>
         <td><span th:text="${events.event_description}">  </span></td>
         <td><span th:text="${events.event_city}">  </span></td>
+        <td><span th:text="${events.event_date}"> </span></td>
 
     </tr>
     </tbody>
