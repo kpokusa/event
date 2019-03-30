@@ -50,7 +50,7 @@ public class SecurityConfigEvent extends WebSecurityConfigurerAdapter {
                         "/adduser/**",
                         "/",
                         "/js/**",
-                        "/css/**",
+                        "/static/css/**",
                         "/img/**",
                         "/webjars/**").permitAll()
                 //.antMatchers("/procregister/**").hasRole("USER")

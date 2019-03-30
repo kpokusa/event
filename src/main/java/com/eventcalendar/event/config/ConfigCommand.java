@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-
+import java.util.List;
 
 @ShellComponent
 public class ConfigCommand {
@@ -32,6 +32,7 @@ public class ConfigCommand {
         userRepo.save(user);
         return String.format("added admin %s\n with password %s ", user.toString(), pass);
     }
+
 
 //        @ShellMethod("show registered users")
 //        public String showUsers() {

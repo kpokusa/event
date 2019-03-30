@@ -10,15 +10,21 @@
 
 
 <br>
+<div class="container">
 <table class="table">
 
-    <h1>Thymeleaf  Please register</h1>
+    <h3>Events calendar display of: </h3>
     <form th:action="@{/login}" method="post">
-        <h2>Login formula</h2>
-           <div><input type="submit" value="Sign In"/></div>
-        <h2>start</h2>
+        <h4>Pleas to log to our site, or register</h4>
+        <div>
+            <input type="submit" value="Sign In"/>
+            <input type="submit" value="Register"/>
+        </div>
+        <h5>ready</h5>
     </form>
+<form>
 
+</form>
     <tbody>
     <tr th:each="events : ${events}">
         <td><span th:text="${events.id}"> </span></td>
@@ -30,7 +36,7 @@
     </tr>
     </tbody>
 </table>
-
+</div>
 
 </body>
 </html>
