@@ -1,7 +1,6 @@
 package com.eventcalendar.event.controller;
 
 
-import com.eventcalendar.event.exceptions.EventNotFoundException;
 import com.eventcalendar.event.persistance.Event;
 import com.eventcalendar.event.persistance.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @RequestMapping("/main")

@@ -2,13 +2,15 @@ package com.eventcalendar.event.persistance;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User  implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user")
     private Long id;
     @NotBlank(message = "email is mandataory")
@@ -21,20 +23,40 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    private String role;
+
 
 
     @OneToMany
     private List<Event> eventList;
 
-    public User(String email, String password, String city, String firstName, String lastName) {
-        this.email = email;
-        this.password = password;
-        this.city = city;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User() {
     }
 
-    public User() {
+//    public User(String email, String password, String city, String firstName, String lastName) {
+//        this.email = email;
+//        this.password = password;
+//        this.city = city;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//    }
+
+
+
+    public User(User user) {
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.password = user.getPassword();
+        this.role = user.getRole();
+        this.email=user.getEmail();
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Long getId() {
@@ -85,15 +107,25 @@ public class User {
         this.lastName = lastName;
     }
 
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", email='" + email + '\'' +
+//                ", password='" + password + '\'' +
+//                ", city='" + city + '\'' +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                '}';
+//    }
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", city='" + city + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nfirstName: %s, ", firstName));
+        sb.append(String.format("lastName: %s, ", lastName));
+        sb.append(String.format("email: %s, ", email));
+        sb.append(String.format("role: %s \n", role));
+
+        return sb.toString();
     }
 }

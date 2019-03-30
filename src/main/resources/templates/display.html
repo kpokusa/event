@@ -8,24 +8,15 @@
 </head>
 <body>
 
-<h4>Display events</h4>
+
 <br>
 <table class="table">
-    <thead>
-    <tr class="table-primary">
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <h1>Thymeleaf tutorial - Please register</h1>
-    <form action="#" data-th-action="@{/events}" data-th-object="${events}" method="post">
-        <h1>
-        <button type="submit" name="action" value="login">Login</button>
-        <button type="submit" name="action" value="register">Register</button>
-        </h1>
+
+    <h1>Thymeleaf  Please register</h1>
+    <form th:action="@{/login}" method="post">
+        <h2>Login formula</h2>
+           <div><input type="submit" value="Sign In"/></div>
+        <h2>start</h2>
     </form>
 
     <tbody>
