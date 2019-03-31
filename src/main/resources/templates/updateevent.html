@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<h4>Add events</h4>
+<table>
+    <br>
+    <form modelAttribute="update" action="#" th:action="@{update/{id}}" th:object="${event}" method="post">
+        <label for="Event_name">Event name</label>
+        <input type="text" th:field="*{event_name}" id="event_name" placeholder="name">
+        <span th:if="${#fields.hasErrors('event_name')}" th:errors="*{name}"></span>
+        <label for="event_description">Event description</label>
+        <input type="text" th:field="*{event_description}" id="event_description" placeholder="desc">
+        <span th:if="${#fields.hasErrors('event_description')}" th:errors="*{event_description}"></span>
+        <br>
+        <label for="event_city">Event City</label>
+        <input type="text" th:field="*{event_city}" id="event_city" placeholder="City">
+        <span th:if="${#fields.hasErrors('event_city')}" th:errors="*{event_city}"></span>
+        <label for="event_date">event date</label>
+        <input type="date" th:field="*{event_date}" id="event_date" placeholder="Year-Mn-Dy">
+        <span th:if="${#fields.hasErrors('event_date')}" th:errors="*{event_date}"></span>
+        <br>
+        <input type="submit" value="update event">
+    </form>
+
+</table>
+
+
+</body>
+</html>

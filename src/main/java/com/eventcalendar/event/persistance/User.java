@@ -2,6 +2,7 @@ package com.eventcalendar.event.persistance;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,7 @@ public class User {
     private Long id;
     @NotBlank(message = "email is mandataory")
     private String email;
+    @Transient
     private String password;
     private String city;
     @Column(name = "first_name")
@@ -21,20 +23,23 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "enabled")
+    private boolean enabled;
 
+    @Column(name = "confirmation_token")
+    private String confirmationToken;
 
-    @OneToMany
-    private List<Event> eventList;
+    public User() {
+    }
 
-    public User(String email, String password, String city, String firstName, String lastName) {
+    public User(@NotBlank(message = "email is mandataory") String email, String password, String city, @NotBlank(message = "name is mandatory") String firstName, String lastName, boolean enabled, String confirmationToken) {
         this.email = email;
         this.password = password;
         this.city = city;
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public User() {
+        this.enabled = enabled;
+        this.confirmationToken = confirmationToken;
     }
 
     public Long getId() {
@@ -85,6 +90,22 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getConfirmationToken() {
+        return confirmationToken;
+    }
+
+    public void setConfirmationToken(String confirmationToken) {
+        this.confirmationToken = confirmationToken;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -94,6 +115,8 @@ public class User {
                 ", city='" + city + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", enabled=" + enabled +
+                ", confirmationToken='" + confirmationToken + '\'' +
                 '}';
     }
 }

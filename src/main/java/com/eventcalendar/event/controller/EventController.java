@@ -1,24 +1,22 @@
 package com.eventcalendar.event.controller;
 
 
-import com.eventcalendar.event.exceptions.EventNotFoundException;
 import com.eventcalendar.event.persistance.Event;
 import com.eventcalendar.event.persistance.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping("/main")
 public class EventController {
 
 
     @Autowired
     private EventRepo eventRepo;
+
 
 
 
@@ -29,19 +27,20 @@ public class EventController {
         return "display";
     }
 
-@GetMapping("/createevents")
-    public String showEventForm(Event event){
-       return "addevent";
-}
+    @GetMapping("/createevents")
+    public String showEventForm(Event event) {
+        return "addevent";
+    }
 
-@PostMapping("/add")
-    public String addEvent(Event event, BindingResult result,Model model){
-        if(result.hasErrors()){
+    @PostMapping("/add")
+    public String addEvent(Event event, BindingResult result, Model model) {
+        if (result.hasErrors()) {
             return "addevent";
         }
         eventRepo.save(event);
         model.addAttribute("events", eventRepo.findAll());
         return "display";
-}
+    }
+
 
 }
